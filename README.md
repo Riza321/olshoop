@@ -4,6 +4,7 @@
 a. Pada aplikasi BE dan FE gunakan node versi v16.14.0
 b. Nyalakan MongoDB -> 1. buka termial dan ketikkan   : mongod --config /usr/local/etc/mongod.conf
                        2. buka terminal baru ketikkan : mongo 
+c. jika nodejs tidak terbaca ketikkan : -> source ~/.nvm/nvm.sh
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
