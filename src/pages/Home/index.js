@@ -1,6 +1,7 @@
 import * as React from "react";
 import menus from "./menus";
 import TopBar from "../../components/TopBar";
+// import { colors } from "../../styles/colors";
 
 import {
   SideNav,
@@ -9,7 +10,7 @@ import {
   CardProduct,
   Pagination,
   InputText,
-  Pill,
+  // Pill,
 } from "upkit";
 import { useDispatch, useSelector } from "react-redux";
 import { config } from "../../config";
@@ -20,10 +21,11 @@ import {
   goToPrevPage,
   setKeyword,
   setCategory,
-  toggleTag,
+  // toggleTag,
+  decStockProduct,
 } from "../../features/Products/actions";
 import { BounceLoader } from "react-spinners";
-import { tags } from "./tags";
+// import { tags } from "./tags";
 import Cart from "../../components/Cart";
 import { addItem, removeItem } from "../../features/Cart/actions";
 import { useHistory } from "react-router-dom";
@@ -42,6 +44,7 @@ export default function Home() {
     products.keyword,
     products.category,
     products.tags,
+    products.stock,
   ]);
 
   return (
@@ -64,7 +67,7 @@ export default function Home() {
                 <InputText
                   fullRound1
                   value={products.keyword}
-                  placeholder="cari makanan favoritmu..."
+                  placeholder="cari obat..."
                   fitContainer
                   onChange={(e) => {
                     dispatch(setKeyword(e.target.value));
@@ -72,7 +75,7 @@ export default function Home() {
                 />
               </div>
 
-              <div className="mb-5 pl-2 flex w-3/3 overflow-auto pb-5">
+              {/* <div className="mb-5 pl-2 flex w-3/3 overflow-auto pb-5">
                 {tags[products.category].map((tag, index) => {
                   //tags[products.category] -> ditampilkan berdsarkan menu / kategori yang aktif,
                   return (
@@ -86,7 +89,7 @@ export default function Home() {
                     </div>
                   );
                 })}
-              </div>
+              </div> */}
 
               {products.status === "process" && !products.data.length ? (
                 <div className="flex justify-center">
@@ -102,7 +105,17 @@ export default function Home() {
                         title={product.name}
                         imgUrl={`${config.api_host}/upload/${product.image_url}`}
                         price={product.price}
-                        onAddToCart={(_) => dispatch(addItem(product))}
+                        onAddToCart={(_) => {
+                          if (product.stock > 0) {
+                            dispatch(addItem(product));
+                            dispatch(decStockProduct(product));
+                            console.log("name product:", product.name);
+                            console.log("stock product:", product.stock);
+                          } else {
+                            window.alert("Oops..! \nStok habis.");
+                            console.log("Stock habis");
+                          }
+                        }}
                       />
                     </div>
                   );
@@ -124,8 +137,14 @@ export default function Home() {
             <div className="w-full md:w-1/4 h-full shadow-lg border-r border-white bg-gray-100">
               <Cart
                 items={cart}
-                onItemInc={(item) => dispatch(addItem(item))}
-                onItemDec={(item) => dispatch(removeItem(item))}
+                onItemInc={(item) => {
+                  dispatch(addItem(item));
+                  dispatch(decStockProduct(products.data));
+                }}
+                onItemDec={(item) => {
+                  dispatch(removeItem(item));
+                  dispatch(decStockProduct(products.data));
+                }}
                 onCheckout={(_) => {
                   history.push("/checkout");
                 }}

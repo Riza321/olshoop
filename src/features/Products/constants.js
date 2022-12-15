@@ -11,3 +11,5 @@ export const SET_TAGS = "features/Products/SET_TAGS";
 export const NEXT_PAGE = "features/Products/NEXT_PAGE";
 export const PREV_PAGE = "features/Products/PREV_PAGE";
 export const TOGGLE_TAG = "features/Products/TOGGLE_TAG";
+export const INC_STOCK = "features/Products/INC_STOCK";
+export const DEC_STOCK = "features/Products/DEC_STOCK";

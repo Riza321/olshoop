@@ -16,6 +16,9 @@ const rules = {
   discount: {
     required: { value: true, message: "diskon tidak boleh kosong" },
   },
+  stock: {
+    required: { value: true, message: "stock tidak boleh kosong" },
+  },
   category: {
     required: { value: true, message: "kategori tidak boleh kosong," },
   },

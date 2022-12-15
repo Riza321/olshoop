@@ -1,7 +1,7 @@
 export const tags = {
   "": [],
-  utama: ["burger", "pizza", "bread"],
-  pastry: ["cheese", "strawberry", "muffin"],
-  snack: ["fried", "bread", "cheese", "coffee"],
-  minuman: ["coffee", "tea", "hot", "cold"],
+  tulip: ["kapsul", "pill", "obat suntik"],
+  dtek: ["sirup", "salep", "tablet"],
+  tcoag: ["obat tetes", "suppositora", "inhaler"],
+  // minuman: ["coffee", "tea", "hot", "cold"],
 };

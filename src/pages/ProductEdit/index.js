@@ -34,17 +34,18 @@ const ProductEdit = () => {
 
         console.log("Data :", data);
 
-        setProduct(data);
-        setValue("nama_produk", data.name);
-        setValue("price", data.price);
-        setValue("discount", data.discount);
+        setProduct(data.data);
+        setValue("nama_produk", data.data.name);
+        setValue("price", data.data.price);
+        setValue("discount", data.data.discount);
+        setValue("stock", data.data.stock);
         setValue("category", {
-          label: data.category.name,
-          value: data.category._id,
+          label: data.data.category.name,
+          value: data.data.category._id,
         });
         setValue(
           "tag",
-          data.tags.map((items) => {
+          data.data.tags.map((items) => {
             return { label: items.name, value: items._id };
           })
         );
@@ -55,6 +56,7 @@ const ProductEdit = () => {
     register({ name: "price" }, rules.price);
     register({ name: "discount" }, rules.discount);
     register({ name: "category" }, rules.category);
+    register({ name: "stock" }, rules.stock);
     register({ name: "tag" }, rules.tag);
   }, [params, register, setValue]);
 
@@ -78,7 +80,10 @@ const ProductEdit = () => {
     payload.append("price", formHook.price);
     payload.append("discount", formHook.discount);
     payload.append("category", formHook.category.value);
+    payload.append("stock", formHook.stock);
     payload.append("tags", JSON.stringify(formHook.tag));
+
+    console.log("stock from edit -->", formHook.stock);
 
     let { data } = await updateProduct(payload, product._id);
 
@@ -156,6 +161,20 @@ const ProductEdit = () => {
               name="discount"
               value={getValues().discount}
               ref={register(rules.discount)}
+            />
+          </FormControl>
+
+          <FormControl
+            label="Stock"
+            errorMessage={errors.stock?.message}
+            color="black"
+          >
+            <InputText
+              placeholder="Stock"
+              fitContainer
+              name="stock"
+              value={getValues().stock}
+              ref={register(rules.stock)}
             />
           </FormControl>
 

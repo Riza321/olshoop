@@ -25,6 +25,7 @@ const initialState = {
   perPage: 6,
   keyword: "",
   category: "",
+  stock: 0,
   tags: [],
   status: statuslist.idle,
 };
@@ -60,6 +61,16 @@ export default function reducer(state = initialState, action) {
         category: action.category,
         keyword: "",
       };
+
+    // case INC_STOCK:
+    //   return state.map((item) => ({
+    //     ...item,
+    //     stock: item._id === action.item._id ? item.stock + 1 : item.stock,
+    //   }));
+
+    // case DEC_STOCK:
+    //   console.log("Stock from reducer :", action.stock);
+    //   return { ...state, stock: action.stock - 1 };
 
     case SET_TAGS:
       return { ...state, tags: action.tags };

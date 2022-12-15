@@ -9,6 +9,8 @@ import {
   TOGGLE_TAG,
   PREV_PAGE,
   NEXT_PAGE,
+  INC_STOCK,
+  DEC_STOCK,
 } from "./constants";
 import { getProducts } from "../../api/product";
 import debounce from "debounce-promise";
@@ -85,6 +87,20 @@ export const setCategory = (category) => {
     category,
   };
 };
+
+export function incStockProduct(item) {
+  return {
+    type: INC_STOCK,
+    item,
+  };
+}
+
+export function decStockProduct(item) {
+  return {
+    type: DEC_STOCK,
+    item,
+  };
+}
 
 export const setTags = (tags) => {
   return {

@@ -45,7 +45,10 @@ const ProductAdd = () => {
     payload.append("price", formHook.price);
     payload.append("discount", formHook.discount);
     payload.append("category", formHook.category.value);
+    payload.append("stock", formHook.stock);
     payload.append("tags", JSON.stringify(formHook.tag));
+
+    console.log("Stock -->", formHook.stock);
 
     let { data } = await createProduct(payload);
 
@@ -98,6 +101,19 @@ const ProductAdd = () => {
               fitContainer
               name="discount"
               ref={register(rules.discount)}
+            />
+          </FormControl>
+
+          <FormControl
+            label="Stock"
+            errorMessage={errors.stock?.message}
+            color="black"
+          >
+            <InputText
+              placeholder="Stock"
+              fitContainer
+              name="stock"
+              ref={register(rules.stock)}
             />
           </FormControl>
 

@@ -19,7 +19,10 @@ const Cart = ({ items, onItemInc, onItemDec, onCheckout }) => {
         </div>
       ) : null}
       <div className="px-2 border-b mt-5 pb-5">
-        <div className="text-3xl flex items-center text-red-700">
+        <div
+          className="text-3xl flex items-center text-red-700"
+          // style={{ color: "green" }}
+        >
           <FaCartPlus />
           <div className="ml-2">Keranjang</div>
         </div>

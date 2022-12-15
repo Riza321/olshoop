@@ -67,7 +67,13 @@ const ManajemenProduk = () => {
     },
     { Header: "Nama", accessor: "name" },
     { Header: "Harga", accessor: (items) => formatRupiah(items.price) },
-    { Header: "Diskon", accessor: "discount" },
+    {
+      Header: "Stock",
+      accessor: (items) => {
+        return <Badge color="red">{items.stock}</Badge>;
+      },
+    },
+    // { Header: "Diskon", accessor: "discount" },
     {
       Header: "Kategori",
       accessor: (items) => {

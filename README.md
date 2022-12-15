@@ -1,10 +1,11 @@
 # Getting Started with Create React App
 
 # Persiapn sebelum project dijalankan
-a. Pada aplikasi BE dan FE gunakan node versi v16.14.0
-b. Nyalakan MongoDB -> 1. buka termial dan ketikkan   : mongod --config /usr/local/etc/mongod.conf
-                       2. buka terminal baru ketikkan : mongo 
+
+a. Pada FE gunakan node versi v16.14.0
+b. Nyalakan MongoDB -> 1. buka termial dan ketikkan : mongod --config /usr/local/etc/mongod.conf 2. buka terminal baru ketikkan : mongo
 c. jika nodejs tidak terbaca ketikkan : -> source ~/.nvm/nvm.sh
+d. login user admin: - riza.pranata@wgs-id.com - riza123
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

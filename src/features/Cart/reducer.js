@@ -7,6 +7,7 @@ const initialState = localStorage.getItem("cart")
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case ADD_ITEM:
+      // if (action.item.product.stock <= 0) return;
       if (state.find((item) => item._id === action.item._id)) {
         return state.map((item) => ({
           ...item,
